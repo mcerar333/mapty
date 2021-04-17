@@ -67,7 +67,6 @@ class SidebarView extends View {
 
   showForm() {
     if (!this._form.classList.contains('hidden')) return;
-    this._form.style.display = 'grid';
     this._form.classList.remove('hidden');
 
     if (this._isTouchDevice()) return;
@@ -77,6 +76,8 @@ class SidebarView extends View {
     this._form.classList.add('hidden');
     this._form.style.display = 'none';
     this._form.reset();
+
+    setTimeout(() => (this._form.style.display = 'grid'), 300);
   }
 
   _validateForm(...inputs) {
