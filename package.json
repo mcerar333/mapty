@@ -1,0 +1,29 @@
+{
+  "name": "mapty",
+  "version": "1.0.0",
+  "description": "activity logger",
+  "default": "index.html",
+  "scripts": {
+    "start": "parcel serve index.html",
+    "build": "parcel build index.html --dist-dir ./dist --no-source-maps"
+  },
+  "keywords": [
+    "hiking",
+    "cycling",
+    "activity logging"
+  ],
+  "author": "TonyG",
+  "license": "ISC",
+  "browserslist": "defaults",
+  "devDependencies": {
+    "@parcel/transformer-image": "next",
+    "@parcel/transformer-sass": "next",
+    "parcel": "next",
+    "sass": "^1.32.8"
+  },
+  "dependencies": {
+    "core-js": "^3.10.1",
+    "leaflet": "^1.7.1",
+    "regenerator-runtime": "^0.13.7"
+  }
+}

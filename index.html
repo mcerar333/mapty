@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <meta
+      name="description"
+      content="Plot your sports activities on a map and monitor your daily progress... 🏃‍♂️🏃‍♀️"
+    />
+    <meta
+      name="keywords"
+      content="mapty, activity logger, hiking, cycling, plot your activities, activity tracking app"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="shortcut icon" type="image/png" href="src/img/icon.png" />
+    <link rel="stylesheet" href="src/sass/main.scss" />
+
+    <script defer src="src/js/controller.js"></script>
+
+    <title>mapty | Plot your workouts</title>
+  </head>
+  <body>
+    <div class="sidebar">
+      <img src="src/img/logo.png" alt="logo" class="logo" />
+
+      <form class="form hidden">
+        <div class="form__row">
+          <label class="form__label">Type</label>
+          <select name="type" class="form__input form__input--type">
+            <option value="hiking">Hiking</option>
+            <option value="cycling">Cycling</option>
+          </select>
+        </div>
+        <div class="form__row">
+          <label class="form__label">Elev Gain</label>
+          <input
+            name="elevation"
+            class="form__input form__input--elevation"
+            placeholder="meters"
+          />
+        </div>
+        <div class="form__row">
+          <label class="form__label">Duration</label>
+          <input
+            name="duration"
+            class="form__input form__input--duration"
+            placeholder="min"
+          />
+        </div>
+        <div class="form__row">
+          <label class="form__label">Cadence</label>
+          <input
+            name="cadence"
+            class="form__input form__input--cadence"
+            placeholder="step/min"
+          />
+        </div>
+        <button class="form__btn">Save Workout</button>
+      </form>
+
+      <form class="search">
+        <label for="search" class="search__label">Filter workouts:</label>
+        <input name="search" type="text" class="search__field" />
+        <div class="search__controls">
+          <button class="btn search__submit" data-tooltip="Filter?">🔍</button>
+          <button
+            class="btn search__reset"
+            type="button"
+            data-tooltip="Show all?"
+          >
+            📑
+          </button>
+        </div>
+      </form>
+
+      <div class="workouts">
+        <ul class="workouts__list"></ul>
+      </div>
+
+      <p class="copyright">
+        Design by Jonas Schmedtmann<br />
+        Developed by Tony G
+      </p>
+    </div>
+
+    <div id="map"></div>
+
+    <!-- ALERTS & MESSAGES -->
+    <div class="alert alert--error">This is an example alert message... 🧐</div>
+  </body>
+</html>

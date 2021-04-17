@@ -1,0 +1,243 @@
+.sidebar {
+  flex-basis: 52.3rem;
+  padding: 3rem 5rem 3rem;
+  background-color: var(--color-dark--1);
+
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: $bp-medium) {
+    flex-basis: 48.4rem;
+    padding: 2rem 3rem 2.5rem;
+  }
+  @media screen and (max-width: $bp-small) {
+    position: absolute;
+    width: 47.6rem;
+    height: 70vh;
+    height: calc(var(--vh, 1vh) * 70);
+    right: 0;
+    top: 0;
+    z-index: 500;
+  }
+  @media screen and (max-width: $bp-smallest) {
+    position: static;
+    width: 100vw;
+    height: 35vh;
+    height: calc(var(--vh, 1vh) * 35);
+    padding: 2rem calc((100vw - 41.6rem) / 2) 2.5rem;
+  }
+}
+
+.logo {
+  align-self: center;
+  margin-bottom: 4rem;
+  height: 5.2rem;
+
+  @media screen and (max-width: $bp-large) {
+    margin-bottom: 3rem;
+  }
+  @media screen and (max-width: $bp-medium) {
+    margin-bottom: 2rem;
+  }
+}
+
+.workouts {
+  padding-top: 2.1rem;
+  padding-right: 1rem;
+  margin-bottom: auto;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: linear-gradient(
+      to top,
+      var(--color-brand--1),
+      var(--color-brand--2)
+    );
+  }
+
+  &__list {
+    list-style: none;
+  }
+}
+
+.form {
+  position: relative;
+
+  border-radius: 5px;
+  margin-bottom: 1.75rem;
+  padding: 1.5rem 2.75rem;
+  background-color: var(--color-dark--2);
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.57rem 2.5rem;
+
+  transition: all 0.5s, transform 1ms;
+
+  @media screen and (max-width: $bp-smallest) {
+    margin-bottom: 0.5rem;
+  }
+
+  &.hidden {
+    height: 0;
+    opacity: 0;
+    margin-bottom: 0;
+    padding: 0 2.25rem;
+    transform: translateY(-30rem);
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__label {
+    flex: 0 0 50%;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+
+  &__input {
+    width: 100%;
+    border: none;
+    font-size: 1.4rem;
+    border-radius: 3px;
+    padding: 0.3rem 1.1rem;
+    background-color: var(--color-light--3);
+    transition: all 0.2s;
+
+    &:focus {
+      outline: none;
+      background-color: #fff;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    visibility: hidden;
+  }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  padding: 1.5rem 2.75rem;
+  background-color: var(--color-dark--2);
+
+  &__label {
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+
+  &__field {
+    border: none;
+    font-size: 1.4rem;
+    border-radius: 3px;
+    padding: 0.3rem 1.1rem;
+    background-color: var(--color-light--3);
+
+    transition: all 0.2s;
+
+    &:focus {
+      outline: none;
+      background-color: #fff;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-self: stretch;
+  }
+
+  &__reset {
+    margin-left: 0.2rem;
+  }
+}
+
+.workout {
+  cursor: help;
+  border-radius: 5px;
+  margin-bottom: 1.75rem;
+  padding: 1.5rem 2.25rem;
+  background-color: var(--color-dark--2);
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem 1.5rem;
+
+  &--hiking {
+    border-left: 5px solid var(--color-brand--2);
+  }
+  &--cycling {
+    border-left: 5px solid var(--color-brand--1);
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 1.7rem;
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  &__details {
+    display: flex;
+    align-items: baseline;
+  }
+
+  &__icon {
+    height: 0.28rem;
+    font-size: 1.8rem;
+    margin-right: 0.2rem;
+  }
+
+  &__value {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  &__unit {
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: var(--color-light--1);
+  }
+}
+
+.copyright {
+  margin-top: 3rem;
+  font-size: 1.3rem;
+  text-align: center;
+  color: var(--color-light--1);
+
+  @media screen and (max-width: $bp-medium) {
+    margin-top: 2rem;
+  }
+  @media screen and (max-width: $bp-smallest) {
+    display: none;
+  }
+}
