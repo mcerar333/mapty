@@ -1,12 +1,6 @@
 import { DISPLAY_ALERT_SEC } from '../config.js';
 
 export default class View {
-  // _parentEl
-  // _alertEl
-
-  // _message
-  // _errorMessage
-
   constructor(parentEl, alertEl) {
     this._parentEl = document.querySelector(parentEl);
     this._alertEl = document.querySelector(alertEl);

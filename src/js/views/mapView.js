@@ -10,9 +10,6 @@ import {
 import View from './View';
 
 class MapView extends View {
-  // _map
-  // _mapZoom
-
   constructor(parentEl, alertEl) {
     super(parentEl, alertEl);
     this._polylines = [];

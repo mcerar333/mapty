@@ -1,7 +1,7 @@
-import { API_KEY } from './config.js';
+import { async } from 'regenerator-runtime';
 import { AJAX } from './helpers.js';
 
-import { async } from 'regenerator-runtime';
+import API_KEY from './api_key.js';
 
 const workoutState = () => {
   return {

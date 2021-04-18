@@ -58,7 +58,7 @@ export const MAP_POLYLINE_COLOR = '#42484d';
 export const MAP_ZOOM = 13;
 
 // AJAX
-export const API_KEY = '3c8b90fbaf75fd3f161492b32a86e82f';
+// export const API_KEY = '';
 export const REQUEST_TIMEOUT_SEC = 5;
 
 // ALERTS
