@@ -109,9 +109,33 @@ const setVh = () => {
 const setVhListeners = () =>
   ['load', 'resize'].forEach(e => addEventListener(e, setVh));
 
+// Register Service Worker
+const registerSW = async () => {
+  try {
+    if (!'serviceWorker' in navigator)
+      throw Error('Service worker not available. Please update your browser');
+
+    const swReg = await navigator.serviceWorker.register(
+      new URL('./../sw.js', import.meta.url)
+    );
+
+    console.log('Service Worker Registered!');
+    console.log(swReg);
+  } catch (err) {
+    err.message.includes(`Service worker not available.`)
+      ? mapView.renderAlert(err.message)
+      : mapView.renderAlert(
+          'Service worker failed to register. PWA features will not work as expected'
+        );
+
+    console.error(err.message);
+  }
+};
+
 const init = () => {
   try {
     setVhListeners();
+    registerSW();
 
     model.init();
     mapView.addHandlerRender(controlMap);

@@ -50,4 +50,12 @@ export default class View {
   _insertHTML(position, markup, parentEl = this._parentEl) {
     parentEl.insertAdjacentHTML(position, markup);
   }
+
+  _isTouchDevice() {
+    return (
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0 ||
+      navigator.msMaxTouchPoints > 0
+    );
+  }
 }

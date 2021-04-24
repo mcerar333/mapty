@@ -16,8 +16,10 @@
   "license": "ISC",
   "browserslist": "defaults",
   "devDependencies": {
+    "@parcel/packager-raw-url": "next",
     "@parcel/transformer-image": "next",
     "@parcel/transformer-sass": "next",
+    "@parcel/transformer-webmanifest": "next",
     "parcel": "next",
     "sass": "^1.32.8"
   },

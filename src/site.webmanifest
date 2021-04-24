@@ -1,7 +1,7 @@
 {
   "name": "Mapty",
   "short_name": "Mapty",
-  "start_url": "/index.html",
+  "start_url": "index.html",
   "display": "standalone",
   "theme_color": "#42484d",
   "background_color": "#2d3439",
@@ -11,12 +11,12 @@
 
   "icons": [
     {
-      "src": "android-chrome-192x192.png",
+      "src": "img/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "android-chrome-512x512.png",
+      "src": "img/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
