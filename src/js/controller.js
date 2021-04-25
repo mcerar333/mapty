@@ -6,7 +6,7 @@ import mapView from './views/mapView.js';
 import * as model from './model.js';
 
 // Import CSS from Leaflet
-import 'leaflet/dist/leaflet.css';
+import CSS from 'leaflet/dist/leaflet.css';
 
 // Import JS from Leaflet
 import L from 'leaflet';
@@ -116,7 +116,7 @@ const registerSW = async () => {
       throw Error('Service worker not available. Please update your browser');
 
     const swReg = await navigator.serviceWorker.register(
-      new URL('./../sw.js', import.meta.url)
+      '../../serviceWorker.js'
     );
 
     console.log('Service Worker Registered!');
@@ -125,7 +125,7 @@ const registerSW = async () => {
     err.message.includes(`Service worker not available.`)
       ? mapView.renderAlert(err.message)
       : mapView.renderAlert(
-          'Service worker failed to register. PWA features will not work as expected'
+          `Service worker failed to register. PWA features won't work as expected`
         );
 
     console.error(err.message);
@@ -138,6 +138,7 @@ const init = () => {
     registerSW();
 
     model.init();
+
     mapView.addHandlerRender(controlMap);
     sidebarView.addHandlerLoad(controlRenderWorkouts);
     sidebarView.addHandlerClick(controlMoveToWorkout, controlRemoveWorkout);
