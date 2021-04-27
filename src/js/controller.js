@@ -5,8 +5,6 @@ import sidebarView from './views/sidebarView.js';
 import mapView from './views/mapView.js';
 import * as model from './model.js';
 
-import favicon from 'url:../img/favicon.ico';
-
 // Import CSS from Leaflet
 import CSS from 'leaflet/dist/leaflet.css';
 
@@ -121,7 +119,7 @@ const registerSW = async () => {
       '../../serviceWorker.js'
     );
 
-    console.log('Service Worker Registered!', swReg);
+    console.log('Service Worker Registered:', swReg);
   } catch (err) {
     err.message.includes(`Service worker not available.`)
       ? mapView.renderAlert(err.message)

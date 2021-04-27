@@ -1,26 +1,7 @@
-const staticCache = 'site-static-v1';
-const dynamicCache = 'site-dynamic-v1';
+import { async } from 'regenerator-runtime/runtime';
 
-// const assets = [
-//   '/',
-//   '/index.html',
-//   // '/favicon.ico',
-//   '/manifest.webmanifest',
-//   // '/index.a564d7e8.css',
-//   // '/index.57c78877.js',
-//   // '/logo.37755af8.png',
-//   // '/start.d13e7f51.png',
-//   // '/finish.27e6e1a5.png',
-//   // '/marker-shadow.b472ae79.png',
-//   // '/favicon-16x16.013a03e3.png',
-//   // '/favicon-32x32.eace7382.png',
-//   // '/apple-touch-icon.e5e385f2.png',
-//   // '/safari-pinned-tab.65abfb42.svg',
-//   // '/android-chrome-192x192.9088898b.png',
-//   // '/maskable-icon-384x384.97585137.png',
-//   // '/android-chrome-512x512.6812c11a.png',
-//   'https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap',
-// ];
+const staticCacheName = 'site-static-v1';
+const dynamicCacheName = 'site-dynamic-v1';
 
 const assets = [
   '/',
@@ -30,33 +11,43 @@ const assets = [
   'https://fonts.gstatic.com/s/manrope/v4/xn7gYHE41ni1AdIRggexSg.woff2',
 ];
 
-const cacheStaticAssets = async () => {
-  const cache = await caches.open(staticCache);
-  cache.addAll(assets);
+const limitCacheSize = async (cacheName, cacheSize) => {
+  const regex = /favicon|logo|android-chrome|\.(?:js|css|ico)$/;
+
+  const cache = await caches.open(cacheName);
+  const keys = await cache.keys();
+
+  if (keys.length <= cacheSize) return;
+
+  keys
+    .filter(key => !regex.test(key.url))
+    .slice(0, keys.length - cacheSize)
+    .map(key => cache.delete(key));
 };
 
-const removeUnusedCaches = async () => {
-  const keys = await caches.keys();
-
-  const deletions = keys
-    .filter(key => key !== staticCache)
-    .map(key => caches.delete(key));
-
-  return Promise.all(deletions);
+const cacheStaticAssets = async () => {
+  try {
+    const cache = await caches.open(staticCacheName);
+    cache.addAll(assets);
+  } catch (err) {
+    console.error(err.message);
+  }
 };
 
 const cacheDynamicAssets = async req => {
-  const [fetchRes, cache] = await Promise.all([
-    fetch(req),
-    caches.open(dynamicCache),
-  ]);
+  try {
+    const [fetchRes, cache] = await Promise.all([
+      fetch(req),
+      caches.open(dynamicCacheName),
+    ]);
 
-  console.log('req:', req);
-  console.log('res', fetchRes);
+    cache.put(req.url, fetchRes.clone());
+    limitCacheSize(dynamicCacheName, 30);
 
-  cache.put(req.url, fetchRes.clone());
-
-  return fetchRes;
+    return fetchRes;
+  } catch (err) {
+    console.error(err.message);
+  }
 };
 
 const matchAssets = async req => {
@@ -64,7 +55,21 @@ const matchAssets = async req => {
     const cacheRes = await caches.match(req);
     return cacheRes ?? cacheDynamicAssets(req);
   } catch (err) {
-    console.warn(err);
+    console.error(err.message);
+  }
+};
+
+const removeUnusedCaches = async () => {
+  try {
+    const keys = await caches.keys();
+
+    const deletions = keys
+      .filter(key => key !== staticCacheName && key !== dynamicCacheName)
+      .map(key => caches.delete(key));
+
+    return Promise.all(deletions);
+  } catch (err) {
+    console.error(err.message);
   }
 };
 
