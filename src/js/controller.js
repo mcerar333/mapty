@@ -115,11 +115,7 @@ const registerSW = async () => {
     if (!'serviceWorker' in navigator)
       throw Error('Service worker not available. Please update your browser');
 
-    const swReg = await navigator.serviceWorker.register(
-      '../../serviceWorker.js'
-    );
-
-    console.log('Service Worker Registered:', swReg);
+    navigator.serviceWorker.register('../../serviceWorker.js');
   } catch (err) {
     err.message.includes(`Service worker not available.`)
       ? mapView.renderAlert(err.message)

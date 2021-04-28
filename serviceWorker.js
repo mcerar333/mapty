@@ -12,7 +12,7 @@ const assets = [
 ];
 
 const limitCacheSize = async (cacheName, cacheSize) => {
-  const regex = /favicon|logo|android-chrome|\.(?:js|css|ico)$/;
+  const regex = /favicon|logo|android-chrome|start|finish\.(?:js|css|ico)$/;
 
   const cache = await caches.open(cacheName);
   const keys = await cache.keys();
@@ -33,12 +33,16 @@ const cacheStaticAssets = async () => {
     console.error(err.message);
   }
 };
+const cacheStaticAssets = async () => {
+  const cache = await caches.open(staticCacheName);
+  cache.addAll(assets);
+};
 
 const cacheDynamicAssets = async req => {
   try {
-    const [fetchRes, cache] = await Promise.all([
-      fetch(req),
+    const [cache, fetchRes] = await Promise.all([
       caches.open(dynamicCacheName),
+      fetch(req),
     ]);
 
     cache.put(req.url, fetchRes.clone());
