@@ -33,10 +33,6 @@ const cacheStaticAssets = async () => {
     console.error(err.message);
   }
 };
-const cacheStaticAssets = async () => {
-  const cache = await caches.open(staticCacheName);
-  cache.addAll(assets);
-};
 
 const cacheDynamicAssets = async req => {
   try {
