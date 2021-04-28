@@ -14,7 +14,7 @@
 - 📑 **Filter workouts** by specifying their location, activity or date.
 - 💾 Workouts information is stored within your browser, utilizing Web Storage API.
 - 📱 Fully responsive & mobile friendly design.
-- 📑 **Progressive Web App:** Install the app on your home screen and enjoy similar benefits that native apps offer you.
+- 📑 **Progressive Web App:** Install the app on your home screen and enjoy native app-like features.
 - 🔥 Built from the ground up with HTML, Sass & Vanilla JS using MVC Pattern.
 - 📦 Bundled with Parcel v2.
 

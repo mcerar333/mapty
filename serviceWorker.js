@@ -1,18 +1,20 @@
 import { async } from 'regenerator-runtime/runtime';
 
-const staticCacheName = 'site-static-v1';
-const dynamicCacheName = 'site-dynamic-v1';
+const staticCacheName = 'site-static-v2';
+const dynamicCacheName = 'site-dynamic-v2';
 
 const assets = [
   '/',
   '/index.html',
+  '/favicon.ico',
   '/manifest.webmanifest',
   'https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap',
+  'https://fonts.gstatic.com/s/manrope/v4/xn7gYHE41ni1AdIRggmxSuXd.woff2',
   'https://fonts.gstatic.com/s/manrope/v4/xn7gYHE41ni1AdIRggexSg.woff2',
 ];
 
 const limitCacheSize = async (cacheName, cacheSize) => {
-  const regex = /favicon|logo|android-chrome|start|finish\.(?:js|css|ico)$/;
+  const regex = /favicon|logo|android|maskable|apple|safari|start|finish|marker|\.(?:js|css|ico)$/;
 
   const cache = await caches.open(cacheName);
   const keys = await cache.keys();
