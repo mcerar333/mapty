@@ -5,25 +5,34 @@
   "default": "index.html",
   "scripts": {
     "start": "parcel serve index.html",
-    "build": "parcel build index.html --dist-dir ./dist --no-source-maps"
+    "build": "parcel build index.html --dist-dir ./dist --no-content-hash --no-source-maps"
   },
   "keywords": [
     "hiking",
     "cycling",
-    "activity-tracking"
+    "activity tracking"
   ],
   "author": "TonyG",
   "license": "ISC",
-  "browserslist": "defaults",
   "devDependencies": {
-    "@parcel/transformer-image": "next",
-    "@parcel/transformer-sass": "next",
-    "parcel": "next",
+    "@parcel/packager-raw-url": "^2.0.0-nightly.2268",
+    "@parcel/transformer-image": "^2.0.0-nightly.2268",
+    "@parcel/transformer-sass": "^2.0.0-nightly.646",
+    "@parcel/transformer-webmanifest": "^2.0.0-nightly.2268",
+    "autoprefixer": "^10.2.5",
+    "parcel": "^2.0.0-nightly.644",
+    "parcel-reporter-static-files-copy": "^1.3.0",
+    "postcss": "^8.2.13",
     "sass": "^1.32.8"
   },
   "dependencies": {
     "core-js": "^3.10.1",
     "leaflet": "^1.7.1",
     "regenerator-runtime": "^0.13.7"
-  }
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not dead",
+    "> 1%"
+  ]
 }

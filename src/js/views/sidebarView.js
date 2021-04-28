@@ -252,14 +252,6 @@ class SidebarView extends View {
   _roundNumber(num, decimals = 1) {
     return Math.round((num + Number.EPSILON) * decimals * 10) / decimals / 10;
   }
-
-  _isTouchDevice() {
-    return (
-      'ontouchstart' in window ||
-      navigator.maxTouchPoints > 0 ||
-      navigator.msMaxTouchPoints > 0
-    );
-  }
 }
 
 export default new SidebarView('.workouts__list', '.alert', '.form', '.search');
