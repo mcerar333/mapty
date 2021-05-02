@@ -15,18 +15,18 @@
   "author": "TonyG",
   "license": "ISC",
   "devDependencies": {
-    "@parcel/packager-raw-url": "^2.0.0-nightly.2268",
-    "@parcel/transformer-image": "^2.0.0-nightly.2268",
-    "@parcel/transformer-sass": "^2.0.0-nightly.646",
-    "@parcel/transformer-webmanifest": "^2.0.0-nightly.2268",
+    "@parcel/packager-raw-url": "^2.0.0-nightly.2273",
+    "@parcel/transformer-image": "^2.0.0-nightly.2273",
+    "@parcel/transformer-sass": "^2.0.0-nightly.651",
+    "@parcel/transformer-webmanifest": "^2.0.0-nightly.2273",
     "autoprefixer": "^10.2.5",
-    "parcel": "^2.0.0-nightly.644",
+    "parcel": "^2.0.0-nightly.649",
     "parcel-reporter-static-files-copy": "^1.3.0",
     "postcss": "^8.2.13",
-    "sass": "^1.32.8"
+    "sass": "^1.32.12"
   },
   "dependencies": {
-    "core-js": "^3.10.1",
+    "core-js": "^3.11.1",
     "leaflet": "^1.7.1",
     "regenerator-runtime": "^0.13.7"
   },
