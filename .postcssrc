@@ -1,9 +1,0 @@
-{
-  "plugins": {
-    "autoprefixer": {
-      "overrideBrowserslist": [
-        "defaults"
-      ]
-    }
-  }
-}
