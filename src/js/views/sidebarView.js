@@ -87,7 +87,7 @@ class SidebarView extends View {
       return `Inputs should only contain positive numbers`;
     else if (inputs.some(input => input <= 0))
       return `Inputs should only contain positive numbers`;
-    return undefined;
+    return null;
   }
 
   renderWorkouts(workouts) {
